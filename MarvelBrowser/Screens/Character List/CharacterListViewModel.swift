@@ -7,16 +7,52 @@
 //
 
 import Foundation
-
 import Moya
+import RxRelay
+
+extension CharacterListViewModel {
+    enum State {
+        case loading
+        case ready([Character])
+        case error
+  }
+}
 
 class CharacterListViewModel {
+        
+    let state = PublishRelay<State>()
     
-    //private let provider = MoyaProvider<MarvelAPI>()
-    private let provider = MoyaProvider<MarvelAPI>(stubClosure: MoyaProvider.immediatelyStub)
+    /*
+    {
+        didSet {
+            switch state {
+            case .ready:
+                viewMessage.isHidden = true
+                tblComics.isHidden = false
+                tblComics.reloadData()
+            case .loading:
+                tblComics.isHidden = true
+                viewMessage.isHidden = false
+                lblMessage.text = "Getting comics ..."
+                imgMeessage.image = #imageLiteral(resourceName: "Loading")
+            case .error:
+                tblComics.isHidden = true
+                viewMessage.isHidden = false
+                lblMessage.text = """
+                              Something went wrong!
+                              Try again later.
+                            """
+                imgMeessage.image = #imageLiteral(resourceName: "Error")
+            }
+        }
+    }
+    */
+    
+    private let provider = MoyaProvider<MarvelAPI>()
+    //private let provider = MoyaProvider<MarvelAPI>(stubClosure: MoyaProvider.immediatelyStub)
 
     
-    private var characters = [Character]()
+    var characters = [Character]()
     
     func request() {
         
@@ -26,13 +62,15 @@ class CharacterListViewModel {
 
             switch result {
             case .success(let response):
-            
-                self.characters = try! response.map(CharacterResponse<Character>.self).data.results
-                print(self.characters)
+                do {
+                    self.characters = try response.map(CharacterResponse<Character>.self).data.results
+                    self.state.accept(.ready(self.characters))
+                } catch {
+                    self.state.accept(.error)
+                }
                 
             case .failure:
-                //self.state = .error
-                print("ERROR", result)
+                self.state.accept(.error)
             }
         }
         
@@ -40,27 +78,4 @@ class CharacterListViewModel {
     
 }
 
-struct Character: Codable {
-    
-    let id: Int
-    let name: String
-    let description: String
-    let thumbnail: Thumbnail
 
-    struct Thumbnail:Codable {
-        let path:String
-        let `extension`:String
-        var url:URL {
-            return URL(string: path + "." + `extension`)!
-        }
-    }
-    
-}
-
-struct CharacterResponse<T: Codable>: Codable {
-    let data: CharacterResults<T>
-}
-
-struct CharacterResults<T: Codable>: Codable {
-    let results : [T]
-}

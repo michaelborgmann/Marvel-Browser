@@ -58,7 +58,7 @@ extension MarvelAPI: TargetType {
                         
         switch self {
         case .characters:
-            return .requestParameters(parameters: ["limit": 10] + authParams, encoding: URLEncoding.default)
+            return .requestParameters(parameters: authParams, encoding: URLEncoding.default)
         }
     }
     

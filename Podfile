@@ -8,6 +8,11 @@ target 'MarvelBrowser' do
   # Pods for MarvelBrowser
   pod 'Moya'
   pod 'RealmSwift'
+  pod 'CryptoSwift'
+  pod 'Kingfisher'
+  pod 'Cartography'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'MarvelBrowserTests' do 
     inherit! :search_paths
