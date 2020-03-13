@@ -41,6 +41,12 @@ extension ModalNavigationRouter: Router {
         //vc.modalPresentationStyle = .fullScreen
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.modalTransitionStyle = .flipHorizontal
+        
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.isTranslucent = true
+        navigationController.view.backgroundColor = .clear
+        
         parentViewController.present(navigationController, animated: animated, completion: nil)
     }
 

@@ -35,13 +35,3 @@ extension MasterCoordinator: CharacterListDelegate {
     }
     
 }
-
-// MARK: - CharacterDetailDelegate
-
-extension MasterCoordinator: CharacterDetailDelegate {
-    
-    public func backButtonPressed() {
-        router.dismiss(animated: true)
-    }
-    
-}

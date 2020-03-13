@@ -18,14 +18,8 @@ public class DetailCoordinator: Coordinator {
     }
     
     public func present(animated: Bool, onDismissed: (() -> Void)?) {
-        let viewController = CharacterDetailViewController.instantiate(delegate: self)
+        let viewController = CharacterDetailViewController.instantiate()
         router.present(viewController, animated: animated, onDismissed: onDismissed)
     }
     
-}
-
-extension DetailCoordinator: CharacterDetailDelegate {
-    public func backButtonPressed() {
-        //<#code#>
-    }
 }
