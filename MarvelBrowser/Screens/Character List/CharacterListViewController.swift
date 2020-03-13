@@ -11,8 +11,8 @@ import Kingfisher
 
 // MARK: - CharacterListDelegate
 
-public protocol CharacterListDelegate: class {
-    //func homeViewControllerDidPressScheduleAppointment(_ viewController: HomeViewController)
+protocol CharacterListDelegate: class {
+    func selectCharacter(_ viewController: CharacterListViewController)
 }
 
 // MARK: - CharacterListViewController
@@ -51,6 +51,10 @@ class CharacterListViewController: UIViewController {
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.selectCharacter(self)
     }
 }
 

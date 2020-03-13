@@ -6,7 +6,7 @@
 //  Copyright © 2020 Michael Borgmann. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class MasterCoordinator: Coordinator {
     
@@ -18,8 +18,7 @@ public class MasterCoordinator: Coordinator {
     }
     
     public func present(animated: Bool, onDismissed: (() -> Void)?) {
-        //let viewController = CharacterListViewController.instantiate(delegate: self)
-        let viewController = CharacterDetailViewController.instantiate(delegate: self)
+        let viewController = CharacterListViewController.instantiate(delegate: self)
         router.present(viewController, animated: animated, onDismissed: onDismissed)
     }
     
@@ -27,7 +26,14 @@ public class MasterCoordinator: Coordinator {
 
 // MARK: - CharacterListDelegate
 
-extension MasterCoordinator: CharacterListDelegate {}
+extension MasterCoordinator: CharacterListDelegate {
+    
+    func selectCharacter(_ viewController: CharacterListViewController) {
+        let viewController = CharacterDetailViewController.instantiate(delegate: self)
+        router.present(viewController, animated: true)
+    }
+    
+}
 
 // MARK: - CharacterDetailDelegate
 

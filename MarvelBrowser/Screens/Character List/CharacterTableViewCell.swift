@@ -18,7 +18,7 @@ class CharacterTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         nameLabel.text = ""
         characterImage.image = UIImage(named: "marvel")
-        
+        indexLabel.text = ""
     }
     
 }
