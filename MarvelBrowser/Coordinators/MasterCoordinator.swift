@@ -18,7 +18,8 @@ public class MasterCoordinator: Coordinator {
     }
     
     public func present(animated: Bool, onDismissed: (() -> Void)?) {
-        let viewController = CharacterListViewController.instantiate(delegate: self)
+        //let viewController = CharacterListViewController.instantiate(delegate: self)
+        let viewController = CharacterDetailViewController.instantiate(delegate: self)
         router.present(viewController, animated: animated, onDismissed: onDismissed)
     }
     
@@ -27,3 +28,7 @@ public class MasterCoordinator: Coordinator {
 // MARK: - CharacterListDelegate
 
 extension MasterCoordinator: CharacterListDelegate {}
+
+// MARK: - CharacterDetailDelegate
+
+extension MasterCoordinator: CharacterDetailDelegate {}
