@@ -13,5 +13,12 @@ class CharacterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var characterImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var indexLabel: UILabel!
+    
+    override func prepareForReuse() {
+        nameLabel.text = ""
+        characterImage.image = UIImage(named: "marvel")
+        
+    }
     
 }

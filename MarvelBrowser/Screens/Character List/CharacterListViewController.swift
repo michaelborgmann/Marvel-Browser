@@ -46,32 +46,65 @@ class CharacterListViewController: UIViewController {
 
 }
 
+// MARK: - UITableViewDelegate
+
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension CharacterListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.characters.count
+        viewModel.pagination?.total ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CharacterTableViewCell
         
-        let character = viewModel.characters[indexPath.row]
         
-        cell.nameLabel.text = character.name
-        cell.characterImage.kf.setImage(with: character.thumbnail.url)
         
-        print(character.name, character.thumbnail.url)
+        if isLoadingCell(for: indexPath) {
+            
+        } else {
+            let character = viewModel.characters[indexPath.row]
+            cell.characterImage.kf.setImage(with: character.thumbnail.url)
+            cell.nameLabel.text = character.name
+            cell.indexLabel.text = "#\(indexPath.row)"
+        }
         
         return cell
     }
     
+}
+
+// MARK: - UITableViewSourcePrefetching
+
+extension CharacterListViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell) {
+            viewModel.request()
+        }
+    }
+    
+    private func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= viewModel.currentPosition
+    }
+    
+    private func visibleIndexPathToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        
+        return Array(indexPathsIntersection)
+    }
     
 }
+
+// MARK: - StoryboardInstantiable
 
 extension CharacterListViewController: StoryboardInstantiable {
     public class func instantiate(delegate: CharacterListDelegate) -> CharacterListViewController {

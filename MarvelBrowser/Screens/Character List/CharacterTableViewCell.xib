@@ -26,9 +26,19 @@
                         <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <size key="shadowOffset" width="2" height="1"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tik-It-nHy">
+                        <rect key="frame" x="8" y="8" width="20" height="14"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <size key="shadowOffset" width="1" height="1"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="zGU-7q-EEa" secondAttribute="trailing" constant="0.01" id="5KA-pj-GB3"/>
+                    <constraint firstItem="Tik-It-nHy" firstAttribute="top" secondItem="rty-Vb-52E" secondAttribute="top" constant="8" id="C7G-CO-ylB"/>
+                    <constraint firstItem="Tik-It-nHy" firstAttribute="leading" secondItem="rty-Vb-52E" secondAttribute="leading" constant="8" id="HW1-Gc-LT5"/>
                     <constraint firstAttribute="bottom" secondItem="zGU-7q-EEa" secondAttribute="bottom" constant="0.01" id="Ib2-Zg-dNR"/>
                     <constraint firstItem="WOX-GA-Ru1" firstAttribute="bottom" secondItem="rty-Vb-52E" secondAttribute="bottomMargin" id="KDy-WO-tlT"/>
                     <constraint firstItem="WOX-GA-Ru1" firstAttribute="trailing" secondItem="rty-Vb-52E" secondAttribute="trailingMargin" id="OIG-td-A4Q"/>
@@ -38,6 +48,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="characterImage" destination="zGU-7q-EEa" id="0Q3-0d-94Z"/>
+                <outlet property="indexLabel" destination="Tik-It-nHy" id="e1x-uu-44s"/>
                 <outlet property="nameLabel" destination="WOX-GA-Ru1" id="gBH-xf-HWd"/>
             </connections>
             <point key="canvasLocation" x="-55.072463768115945" y="61.941964285714285"/>

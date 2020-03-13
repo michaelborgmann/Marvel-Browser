@@ -21,6 +21,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="yew-VO-b1j" id="ehT-AF-AZu"/>
                                     <outlet property="delegate" destination="yew-VO-b1j" id="znh-GP-Cmm"/>
+                                    <outlet property="prefetchDataSource" destination="yew-VO-b1j" id="n6n-8N-z6d"/>
                                 </connections>
                             </tableView>
                         </subviews>

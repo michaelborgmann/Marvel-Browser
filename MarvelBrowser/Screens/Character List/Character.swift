@@ -8,8 +8,14 @@
 
 import Foundation
 
+struct Pagination: Codable {
+    let offset: Int
+    let limit: Int
+    let total: Int
+    let count: Int
+}
+
 struct Character: Codable {
-    
     let id: Int
     let name: String
     let description: String
@@ -22,7 +28,6 @@ struct Character: Codable {
             return URL(string: path + "." + `extension`)!
         }
     }
-    
 }
 
 struct CharacterResponse<T: Codable>: Codable {
@@ -31,4 +36,8 @@ struct CharacterResponse<T: Codable>: Codable {
 
 struct CharacterResults<T: Codable>: Codable {
     let results : [T]
+}
+
+struct PaginationResult<T: Codable>: Codable {
+    let data : T
 }

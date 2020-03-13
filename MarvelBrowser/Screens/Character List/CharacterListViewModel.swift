@@ -20,51 +20,36 @@ extension CharacterListViewModel {
 
 class CharacterListViewModel {
         
-    let state = PublishRelay<State>()
-    
-    /*
-    {
-        didSet {
-            switch state {
-            case .ready:
-                viewMessage.isHidden = true
-                tblComics.isHidden = false
-                tblComics.reloadData()
-            case .loading:
-                tblComics.isHidden = true
-                viewMessage.isHidden = false
-                lblMessage.text = "Getting comics ..."
-                imgMeessage.image = #imageLiteral(resourceName: "Loading")
-            case .error:
-                tblComics.isHidden = true
-                viewMessage.isHidden = false
-                lblMessage.text = """
-                              Something went wrong!
-                              Try again later.
-                            """
-                imgMeessage.image = #imageLiteral(resourceName: "Error")
-            }
-        }
-    }
-    */
+    let state = BehaviorRelay<State>(value: .ready([]))
     
     private let provider = MoyaProvider<MarvelAPI>()
     //private let provider = MoyaProvider<MarvelAPI>(stubClosure: MoyaProvider.immediatelyStub)
-
     
     var characters = [Character]()
+    var pagination: Pagination?
+    var currentPosition = 0
     
     func request() {
         
-        provider.request(.characters) { [weak self] result in
+        switch state.value {
+        case .loading: return
+        default: break
+        }
+        
+        state.accept(.loading)
+                
+        provider.request(.characters(currentPosition)) { [weak self] result in
           
             guard let self = self else { return }
 
             switch result {
             case .success(let response):
                 do {
-                    self.characters = try response.map(CharacterResponse<Character>.self).data.results
+                    self.pagination = try response.map(PaginationResult<Pagination>.self).data
+                    self.characters += try response.map(CharacterResponse<Character>.self).data.results
                     self.state.accept(.ready(self.characters))
+                    
+                    self.currentPosition += self.pagination!.count
                 } catch {
                     self.state.accept(.error)
                 }

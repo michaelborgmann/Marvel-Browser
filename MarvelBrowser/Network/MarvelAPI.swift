@@ -16,7 +16,7 @@ public enum MarvelAPI {
     static private let publicKey = "c5d728c1fa69f60cf903606b4ce84200"
     static private let privateKey = "67aa4fd792c95c8d67fcf2945b489edc1323a01d"
     
-    case characters
+    case characters(Int)
 }
 
 extension MarvelAPI: TargetType {
@@ -57,8 +57,9 @@ extension MarvelAPI: TargetType {
         let authParams: [String: Any] = ["apikey": MarvelAPI.publicKey, "ts": ts, "hash": hash]
                         
         switch self {
-        case .characters:
-            return .requestParameters(parameters: authParams, encoding: URLEncoding.default)
+        case .characters(let offset):
+            let params = ["offset": offset, "limit": 20]
+            return .requestParameters(parameters: params + authParams, encoding: URLEncoding.default)
         }
     }
     
