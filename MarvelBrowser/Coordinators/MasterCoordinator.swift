@@ -28,9 +28,9 @@ public class MasterCoordinator: Coordinator {
 
 extension MasterCoordinator: CharacterListDelegate {
     
-    func selectCharacter(_ viewController: CharacterListViewController) {
+    func selectCharacter(_ viewController: CharacterListViewController, character: Character) {
         let router = ModalNavigationRouter(parentViewController: viewController)
-        let coordinator = DetailCoordinator(router: router)
+        let coordinator = DetailCoordinator(router: router, character: character)
         presentChild(coordinator, animated: true)
     }
     

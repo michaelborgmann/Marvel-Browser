@@ -12,7 +12,7 @@ import Kingfisher
 // MARK: - CharacterListDelegate
 
 protocol CharacterListDelegate: class {
-    func selectCharacter(_ viewController: CharacterListViewController)
+    func selectCharacter(_ viewController: CharacterListViewController, character: Character)
 }
 
 // MARK: - CharacterListViewController
@@ -22,7 +22,7 @@ class CharacterListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     public weak var delegate: CharacterListDelegate?
-    private let viewModel = CharacterListViewModel()
+    let viewModel = CharacterListViewModel()
     private let cellID = "character"
 
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ extension CharacterListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.selectCharacter(self)
+        delegate?.selectCharacter(self, character: viewModel.characters[indexPath.row])
     }
 }
 

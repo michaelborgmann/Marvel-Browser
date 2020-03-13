@@ -8,17 +8,19 @@
 
 import Foundation
 
-public class DetailCoordinator: Coordinator {
+class DetailCoordinator: Coordinator {
     
     public var children: [Coordinator] = []
     public var router: Router
+    private let character: Character
         
-    public init(router: Router) {
+    init(router: Router, character: Character) {
         self.router = router
+        self.character = character
     }
     
     public func present(animated: Bool, onDismissed: (() -> Void)?) {
-        let viewController = CharacterDetailViewController.instantiate()
+        let viewController = CharacterDetailViewController.instantiate(for: character)
         router.present(viewController, animated: animated, onDismissed: onDismissed)
     }
     
