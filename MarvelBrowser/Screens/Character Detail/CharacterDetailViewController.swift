@@ -11,13 +11,14 @@ import UIKit
 // MARK: - CharacterDetailDelegate
 
 public protocol CharacterDetailDelegate: class {
-    //func homeViewControllerDidPressScheduleAppointment(_ viewController: HomeViewController)
+    func backButtonPressed()
 }
 
 // MARK: - CharacterDetailViewController
 
 class CharacterDetailViewController: UIViewController {
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var characterImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
@@ -27,6 +28,11 @@ class CharacterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func back(_ sender: Any) {
+        delegate?.backButtonPressed()
+    }
+    
 }
 
 // MARK: - StoryboardInstantiable

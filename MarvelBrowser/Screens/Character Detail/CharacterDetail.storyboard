@@ -10,7 +10,6 @@
         <!--Character Detail View Controller-->
         <scene sceneID="V4o-MK-F87">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pz8-cp-VPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CharacterDetailViewController" id="15G-Nf-RBz" customClass="CharacterDetailViewController" customModule="MarvelBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i4I-fW-Tfs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -40,7 +39,7 @@
                                         </visualEffectView>
                                     </subviews>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="398" placeholderIntrinsicHeight="605" image="spiderman" translatesAutoresizingMaskIntoConstraints="NO" id="vWy-bW-lFg">
                                 <rect key="frame" x="8" y="60" width="398" height="220"/>
@@ -89,6 +88,7 @@
                         <outlet property="nameLabel" destination="xzF-B5-XmG" id="Tyv-lt-OFx"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pz8-cp-VPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="39.130434782608695" y="174.77678571428569"/>
         </scene>

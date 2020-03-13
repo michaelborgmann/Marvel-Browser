@@ -29,12 +29,19 @@ public class MasterCoordinator: Coordinator {
 extension MasterCoordinator: CharacterListDelegate {
     
     func selectCharacter(_ viewController: CharacterListViewController) {
-        let viewController = CharacterDetailViewController.instantiate(delegate: self)
-        router.present(viewController, animated: true)
+        let router = ModalNavigationRouter(parentViewController: viewController)
+        let coordinator = DetailCoordinator(router: router)
+        presentChild(coordinator, animated: true)
     }
     
 }
 
 // MARK: - CharacterDetailDelegate
 
-extension MasterCoordinator: CharacterDetailDelegate {}
+extension MasterCoordinator: CharacterDetailDelegate {
+    
+    public func backButtonPressed() {
+        router.dismiss(animated: true)
+    }
+    
+}

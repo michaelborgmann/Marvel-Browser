@@ -33,6 +33,8 @@
 		4C4E8457241AB609000F7D5D /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4E8456241AB609000F7D5D /* CharacterTableViewCell.xib */; };
 		4C4E8459241B1B83000F7D5D /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E8458241B1B83000F7D5D /* CharacterDetailViewController.swift */; };
 		4C4E845C241B1C88000F7D5D /* CharacterDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4E845B241B1C88000F7D5D /* CharacterDetail.storyboard */; };
+		4C5AAC30241B6C4D00DAAA35 /* ModalNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5AAC2F241B6C4D00DAAA35 /* ModalNavigationRouter.swift */; };
+		4C5AAC32241B6F1B00DAAA35 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5AAC31241B6F1B00DAAA35 /* DetailCoordinator.swift */; };
 		BF2FB73E5DFEBFE947F03B6B /* Pods_MarvelBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FCE694B4CB3D8D603FB53E /* Pods_MarvelBrowser.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		4C4E8456241AB609000F7D5D /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		4C4E8458241B1B83000F7D5D /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		4C4E845B241B1C88000F7D5D /* CharacterDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharacterDetail.storyboard; sourceTree = "<group>"; };
+		4C5AAC2F241B6C4D00DAAA35 /* ModalNavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationRouter.swift; sourceTree = "<group>"; };
+		4C5AAC31241B6F1B00DAAA35 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		6433F58CC31769BEFA197B66 /* Pods-MarvelBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelBrowser.debug.xcconfig"; path = "Target Support Files/Pods-MarvelBrowser/Pods-MarvelBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		76FCE694B4CB3D8D603FB53E /* Pods_MarvelBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACFC8744ED1B69C085F49EB /* Pods-MarvelBrowser-MarvelBrowserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelBrowser-MarvelBrowserUITests.release.xcconfig"; path = "Target Support Files/Pods-MarvelBrowser-MarvelBrowserUITests/Pods-MarvelBrowser-MarvelBrowserUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				4C4E8435241A7647000F7D5D /* Router.swift */,
 				4C4E8441241A7F0A000F7D5D /* AppDelegateRouter.swift */,
 				4C4E8430241A7255000F7D5D /* NavigationRouter.swift */,
+				4C5AAC2F241B6C4D00DAAA35 /* ModalNavigationRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			children = (
 				4C4E8437241A76A8000F7D5D /* Coordinator.swift */,
 				4C4E8439241A78D1000F7D5D /* MasterCoordinator.swift */,
+				4C5AAC31241B6F1B00DAAA35 /* DetailCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -556,6 +562,8 @@
 			files = (
 				4C4E83FE241A6EFE000F7D5D /* CharacterListViewController.swift in Sources */,
 				4C4E83FA241A6EFE000F7D5D /* AppDelegate.swift in Sources */,
+				4C5AAC30241B6C4D00DAAA35 /* ModalNavigationRouter.swift in Sources */,
+				4C5AAC32241B6F1B00DAAA35 /* DetailCoordinator.swift in Sources */,
 				4C4E8455241AAF22000F7D5D /* CharacterTableViewCell.swift in Sources */,
 				4C4E8442241A7F0A000F7D5D /* AppDelegateRouter.swift in Sources */,
 				4C4E8438241A76A8000F7D5D /* Coordinator.swift in Sources */,
