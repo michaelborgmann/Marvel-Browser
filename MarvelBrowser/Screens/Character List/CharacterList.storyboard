@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQw-fu-Qes">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQw-fu-Qes">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
@@ -24,17 +24,23 @@
                                     <outlet property="prefetchDataSource" destination="yew-VO-b1j" id="n6n-8N-z6d"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="PYj-jA-ZEQ">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="PYj-jA-ZEQ" firstAttribute="centerX" secondItem="Rzj-p5-yEu" secondAttribute="centerX" id="18Y-HW-0Qo"/>
                             <constraint firstItem="tQw-fu-Qes" firstAttribute="top" secondItem="lbc-xn-BdQ" secondAttribute="top" id="LP5-GN-SLJ"/>
                             <constraint firstItem="tQw-fu-Qes" firstAttribute="leading" secondItem="lbc-xn-BdQ" secondAttribute="leading" id="QLI-UD-1Fv"/>
+                            <constraint firstItem="PYj-jA-ZEQ" firstAttribute="centerY" secondItem="Rzj-p5-yEu" secondAttribute="centerY" id="bJ7-Hh-PgI"/>
                             <constraint firstItem="lbc-xn-BdQ" firstAttribute="bottom" secondItem="tQw-fu-Qes" secondAttribute="bottom" id="fYT-YW-WuE"/>
                             <constraint firstItem="lbc-xn-BdQ" firstAttribute="trailing" secondItem="tQw-fu-Qes" secondAttribute="trailing" id="kCO-HY-GW6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lbc-xn-BdQ"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="PYj-jA-ZEQ" id="QPF-5v-7cb"/>
                         <outlet property="tableView" destination="tQw-fu-Qes" id="zSA-ex-OHE"/>
                     </connections>
                 </viewController>

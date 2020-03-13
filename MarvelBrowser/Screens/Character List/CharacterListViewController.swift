@@ -20,6 +20,7 @@ protocol CharacterListDelegate: class {
 class CharacterListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     public weak var delegate: CharacterListDelegate?
     let viewModel = CharacterListViewModel()
@@ -37,9 +38,22 @@ class CharacterListViewController: UIViewController {
     }
     
     private func bindUI() {
+        
         _ = viewModel.state.subscribe(onNext: { _ in
             self.tableView.reloadData()
         })
+        
+        _ = viewModel.state.subscribe(onNext: { state in
+            switch state {
+            case .loading:
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            default:
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+            }
+        })
+        
     }
 
     // MARK: - Actions
